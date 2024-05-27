@@ -1,0 +1,37 @@
+/* MainHeader.module.css */
+
+.header {
+  background-color: navy;
+  color: white;
+  padding: 1rem;
+}
+
+.header nav {
+  overflow-x: auto; /* 가로 방향 스크롤을 추가 */
+  overflow-y: hidden; /* 세로 방향 오버플로우 숨김 */
+  white-space: nowrap; /* 메뉴 항목들이 한 줄에 표시되도록 설정 */
+}
+
+.header nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.header nav ul li {
+  margin: 0 1rem;
+}
+
+.header a {
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+}
+
+.header a.active {
+  color: #95bcf0;
+  padding-bottom: 0.25rem;
+  border-bottom: 4px solid #95bcf0;
+}

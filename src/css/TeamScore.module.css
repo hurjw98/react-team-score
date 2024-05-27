@@ -1,0 +1,20 @@
+/* TeamScore.module.css */
+.container {
+  padding: 20px;
+}
+
+.scoreChangeContainer {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.teamButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.scoreLog {
+  margin-top: 20px;
+}

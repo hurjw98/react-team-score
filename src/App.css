@@ -1,0 +1,9 @@
+.App {
+  font-family: Arial, sans-serif;
+  padding: 50px;
+}
+
+.dark-mode {
+  background-color: #222;
+  color: #fff;
+}

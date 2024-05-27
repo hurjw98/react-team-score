@@ -1,0 +1,27 @@
+/* ScoreChange.module.css */
+.scoreChange {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.description {
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.selector {
+  font-size: 1.5rem;
+  padding: 10px;
+  margin-right: 20px;
+}
+
+.scoreDisplay {
+  text-align: center;
+  font-size: 2rem;
+  padding: 10px;
+  border-radius: 5px;
+  color: white;
+  width: 150px;
+}

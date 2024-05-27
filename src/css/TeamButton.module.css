@@ -1,0 +1,46 @@
+/* TeamButton.module.css */
+.teamButton {
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.teamHeader {
+  font-weight: bold;
+  cursor: pointer;
+  width: 100%;
+  text-align: left;
+  background-color: #f0f0f0;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.members {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #fafafa;
+  border-radius: 5px;
+}
+
+.member {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  align-items: center;
+}
+
+.scoreButton {
+  padding: 5px 10px;
+  border: none;
+  background-color: #007bff;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.scoreButton:hover {
+  background-color: #0056b3;
+}
