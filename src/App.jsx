@@ -9,7 +9,7 @@ import TeamScore from "./pages/TeamScore";
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.VITE_PUBLIC_URL}>
       <MainHeader />
       <main>
         <Switch>
