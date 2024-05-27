@@ -81,7 +81,9 @@ const ScoreChange = ({ onScoreSelect, selectedScore }) => {
 
 export default ScoreChange;
 ```
+
 <br/>
+
 ### 3-2. View and Delete Score Log
 사용자는 점수 변경 기록을 확인하고 개별 기록을 삭제할 수 있습니다. 기록은 팀명, 팀원, 변경된 점수, 날짜 및 시간으로 구성되어 있습니다.
 
@@ -130,7 +132,9 @@ const ScoreLog = ({ log, onRemoveLog, onClearLogs }) => {
 
 export default ScoreLog;
 ```
+
 <br/>
+
 ### 3-3. Clear All Score Logs
 사용자는 모든 점수 변경 기록을 삭제할 수 있습니다. 이때, 모든 기록이 삭제되며, 삭제된 기록에 해당하는 점수 변경도 복구됩니다.
 
@@ -179,10 +183,13 @@ const ScoreLog = ({ log, onRemoveLog, onClearLogs }) => {
 
 export default ScoreLog;
 ```
+
 <br/>
 <br/>
+
 ## 4. UI/UX
-4-1. Responsive Web
+
+### 4-1. Responsive Web
 팀 점수 관리 애플리케이션은 화면 크기에 따라 유동적으로 사이즈가 조절됩니다. 미디어 쿼리를 지정해 다양한 화면 크기에서 최적화된 UI를 제공합니다.
 
 ```css
@@ -199,7 +206,8 @@ export default ScoreLog;
 ```
 <br/>
 <br/>
-맨위로 이동하기(#-팀-점수-관리-토이-프로젝트)
+
+[맨위로 이동하기](#-팀-점수-관리-토이-프로젝트)
 
 
 
