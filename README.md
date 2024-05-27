@@ -207,7 +207,7 @@ export default ScoreLog;
 <br/>
 <br/>
 
-[맨위로 이동하기](#)
+[맨위로 이동하기](#-팀-점수-관리-toy-프로젝트)
 
 
 
