@@ -1,5 +1,5 @@
 // App.jsx
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.css";
 
 import MainHeader from "./components/MainHeader";
