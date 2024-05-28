@@ -7,6 +7,7 @@ import FirstPage from "./pages/FirstPage";
 import NotFound from "./pages/NotFound";
 import TeamScore from "./pages/TeamScore";
 
+/////////// main.jsx 수정해야 합니다
 function App() {
   return (
     <>
