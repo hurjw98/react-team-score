@@ -11,7 +11,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d public"
   },
-  "homepage": "https://hurjw98.github.io/react-team-score/",
+  "homepage": "./",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
