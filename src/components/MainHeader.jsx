@@ -1,5 +1,4 @@
 // MainHeader.jsx
-
 import { NavLink } from "react-router-dom";
 import classes from "../css/MainHeader.module.css";
 
@@ -9,7 +8,10 @@ const MainHeader = () => {
       <nav>
         <ul>
           <li>
-            <NavLink activeClassName={classes.active} to="/TeamScore">
+            <NavLink
+              className={({ isActive }) => (isActive ? classes.active : "")}
+              to="/TeamScore"
+            >
               TeamScore
             </NavLink>
           </li>
