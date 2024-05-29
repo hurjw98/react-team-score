@@ -1,15 +1,20 @@
 // ScoreLog.jsx
-import React from "react";
-import style from "../css/ScoreLog.module.css";
+import React from "react"; // React 라이브러리를 임포트
+import style from "../css/ScoreLog.module.css"; // CSS 모듈을 임포트하여 컴포넌트의 스타일을 적용
 
 const ScoreLog = ({ log, onRemoveLog, onClearLogs }) => {
+  // log: 점수 변경 로그 배열
+  // onRemoveLog: 개별 로그 항목을 삭제하는 함수
+  // onClearLogs: 모든 로그를 삭제하는 함수
+
   return (
     <div className={style.scoreLog}>
       <div className={style.logHeader}>
         <h2>점수 변경 기록</h2>
         <button className={style.clearButton} onClick={onClearLogs}>
           전체 삭제
-        </button>
+        </button>{" "}
+        {/* 모든 로그를 삭제하는 버튼 */}
       </div>
       <table>
         <thead>
@@ -33,15 +38,17 @@ const ScoreLog = ({ log, onRemoveLog, onClearLogs }) => {
                       ? "lightblue"
                       : entry.change > 0
                       ? "lightcoral"
-                      : "lightgray",
+                      : "lightgray" /* 변경된 점수에 따라 배경색 변경 */,
                 }}
               >
                 {entry.change > 0 ? "+" : ""}
-                {entry.change}
+                {entry.change}{" "}
+                {/* 변경된 점수 표시, 양수일 경우 "+" 기호 추가 */}
               </td>
               <td>{entry.dateTimeString}</td>
               <td>
-                <button onClick={() => onRemoveLog(index)}>삭제</button>
+                <button onClick={() => onRemoveLog(index)}>삭제</button>{" "}
+                {/* 개별 로그 항목 삭제 버튼 */}
               </td>
             </tr>
           ))}
@@ -51,4 +58,4 @@ const ScoreLog = ({ log, onRemoveLog, onClearLogs }) => {
   );
 };
 
-export default ScoreLog;
+export default ScoreLog; // ScoreLog 컴포넌트를 기본 내보내기
