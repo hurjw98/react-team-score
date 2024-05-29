@@ -1,9 +1,11 @@
 // TeamScore.jsx
-import React, { useState } from "react"; // React 라이브러리와 상태 관리를 위한 useState 훅을 임포트
-import TeamButton from "../components/TeamButton"; // TeamButton 컴포넌트를 임포트
-import ScoreChange from "../components/ScoreChange"; // ScoreChange 컴포넌트를 임포트
-import ScoreLog from "../components/ScoreLog"; // ScoreLog 컴포넌트를 임포트
-import style from "../css/TeamScore.module.css"; // CSS 모듈을 임포트하여 컴포넌트의 스타일을 적용
+// TeamScore는 팀과 학생들의 점수를 관리하는 메인 컴포넌트임
+
+import React, { useState } from "react";
+import TeamButton from "../components/TeamButton";
+import ScoreChange from "../components/ScoreChange";
+import ScoreLog from "../components/ScoreLog";
+import style from "../css/TeamScore.module.css";
 
 // 팀 데이터 배열
 const teams = [
@@ -47,67 +49,91 @@ const students = [
 ];
 
 const TeamScore = () => {
-  const [log, setLog] = useState([]); // 로그 상태를 관리하는 useState 훅. 초기값은 빈 배열
-  const [selectedScore, setSelectedScore] = useState(0); // 선택된 점수를 관리하는 useState 훅. 초기값은 0
-  const [studentData, setStudentData] = useState(students); // 학생 데이터를 관리하는 useState 훅. 초기값은 students 배열
+  // 로그 상태를 관리하는 useState 훅 -> 초기값은 빈 배열
+  const [log, setLog] = useState([]);
+
+  // 선택된 점수를 관리하는 useState 훅 -> 초기값은 0
+  const [selectedScore, setSelectedScore] = useState(0);
+
+  // 학생 데이터를 관리하는 useState 훅 -> 초기값은 students 배열
+  const [studentData, setStudentData] = useState(students);
 
   // 로그 추가 함수
   const addLog = (team, member, change) => {
-    const currentDateTime = new Date(); // 현재 날짜 및 시간 객체 생성
-    const dateTimeString = `${currentDateTime.getFullYear()}/${String(
-      currentDateTime.getMonth() + 1
-    ).padStart(2, "0")}/${String(currentDateTime.getDate()).padStart(
-      2,
-      "0"
-    )} ${currentDateTime.toLocaleString("en-US", { weekday: "long" })} ${String(
-      currentDateTime.getHours()
-    ).padStart(2, "0")}:${String(currentDateTime.getMinutes()).padStart(
-      2,
-      "0"
-    )}`;
+    // 현재 날짜와 시간 객체 생성
+    const currentDateTime = new Date();
 
-    setLog([...log, { team, member, change, dateTimeString }]); // 기존 로그 배열에 새로운 로그 항목 추가
+    // 날짜 및 시간 문자열 생성
+    const year = currentDateTime.getFullYear(); // 연도
+    const month = String(currentDateTime.getMonth() + 1).padStart(2, "0"); // 월 (1월은 0부터 시작하므로 +1 필요)
+    const date = String(currentDateTime.getDate()).padStart(2, "0"); // 일
+    const day = currentDateTime.toLocaleString("ko-KR", { weekday: "long" }); // 요일 : en-US로 해도 됨
+    const hours = String(currentDateTime.getHours()).padStart(2, "0"); // 시
+    const minutes = String(currentDateTime.getMinutes()).padStart(2, "0"); // 분
+    ////  참고 :
+    ////   padStart는 JavaScript의 String 객체 메서드 중 하나로,
+    ////   문자열의 시작 부분을 다른 문자열로 채워 주어진 길이를 맞추는 기능을 한다.
+
+    // 년/월/일/요일 시간:분
+    const dateTimeString = `${year}/${month}/${date} ${day} ${hours}:${minutes}`;
+
+    // 기존 로그 배열에 새로운 로그 항목 추가
+    setLog([...log, { team, member, change, dateTimeString }]);
   };
 
-  // 점수 선택 함수
+  // 점수 선택 함수 : 선택한 점수를 다른 곳에서 사용하기 위해 필요한 함수
   const handleScoreSelect = (score) => {
-    setSelectedScore(score); // 선택된 점수를 업데이트
+    setSelectedScore(score);
   };
 
-  // 점수 변경 함수
+  // 점수 변경 함수 : 학생의 점수를 변경하는 함수
   const handleScoreChange = (memberId, change) => {
     const updatedStudents = studentData.map((student) => {
       if (student.std_id === memberId) {
-        return { ...student, score: student.score + change }; // 해당 학생의 점수 변경
+        return { ...student, score: student.score + change }; // 점수를 변경하고 반환
       }
-      return student;
+
+      return student; // 해당 학생이 아닌 경우 그대로 반환
     });
-    setStudentData(updatedStudents); // 업데이트된 학생 데이터 설정
+
+    // 업데이트된 학생 데이터를 상태로 설정
+    setStudentData(updatedStudents);
   };
 
   // 로그 제거 함수
   const removeLog = (index) => {
     const newLog = [...log]; // 기존 로그 배열 복사
-    const { member, change } = newLog.splice(index, 1)[0]; // 해당 인덱스의 로그 항목 제거 및 해당 항목 반환
+
+    // 해당 인덱스의 로그 항목 제거 및 해당 항목 반환
+    const { member, change } = newLog.splice(index, 1)[0];
+    // 참고 : array.splice(배열 변경 시작 인덱스, 베열에서 제거할 요소의 수, 추가할 요소, 추가할 요소, ...);
+    // 참고 : const { member, change }는 구조 배당 할당을 이용한 것임
+
     setLog(newLog); // 새로운 로그 배열 설정
 
+    // 로그를 삭제하면 해당 학생의 점수가 복원됨
     const updatedStudents = studentData.map((student) => {
       if (student.std_name === member) {
-        return { ...student, score: student.score - change }; // 해당 학생의 점수 복원
+        return { ...student, score: student.score - change }; // 학생의 점수를 변경 전으로 복원
       }
-      return student;
+      return student; // 해당 학생이 아닌 경우 그대로 반환
     });
     setStudentData(updatedStudents); // 업데이트된 학생 데이터 설정
   };
 
-  // 모든 로그 제거 및 점수 초기화 함수
+  // 모든 로그 제거 및 모든 점수 초기화
   const clearLogs = () => {
     const updatedStudents = studentData.map((student) => {
       // 모든 학생 데이터에 대해 총 점수 변화를 계산
       const totalChange = log
-        .filter(({ member }) => member === student.std_name) // filter: 학생 이름이 로그의 멤버와 같은 로그 항목만 추출
-        .reduce((sum, { change }) => sum + change, 0); // reduce를 사용하여 총 점수 변화 계산
-      return { ...student, score: student.score - totalChange }; // 학생의 점수를 초기화
+
+        // filter를 사용하여 해당하는 학생의 로그 항목만 추출
+        .filter(({ member }) => member === student.std_name)
+
+        // reduce를 사용하여 총 점수 변화 계산
+        .reduce((sum, { change }) => sum + change, 0);
+
+      return { ...student, score: student.score - totalChange }; // 학생의 점수를 원래대로 초기화
     });
     setStudentData(updatedStudents); // 업데이트된 학생 데이터 설정
     setLog([]); // 로그 초기화
@@ -116,26 +142,36 @@ const TeamScore = () => {
   return (
     <div className={style.container}>
       <h1>팀 점수 관리</h1>
+
       <div className={style.scoreChangeContainer}>
+        {/* ScoreChange는 점수를 선택하는 인터페이스를 제공함 */}
         <ScoreChange
           onScoreSelect={handleScoreSelect} /* 점수 선택 시 호출될 함수 전달 */
           selectedScore={selectedScore} /* 현재 선택된 점수 전달 */
         />
       </div>
+
       <div className={style.teamButtons}>
+        {/* TeamButton는 각 팀의 정보를 표시하고 팀원들의 점수를 변경하는 인터페이스를 제공함 */}
         {teams.map((team) => (
           <TeamButton
-            key={team.team_id} /* 각 팀 버튼에 고유 키 설정 */
+            key={team.team_id} /* 각 팀 버튼의 고유 번호 */
             team={team.team_name} /* 팀 이름 전달 */
+            /* */
+            /* filter: 학생 데이터 중 해당 팀에 속한 학생들만 추출 */
             members={studentData.filter(
-              (student) => student.team_id === team.team_id // filter: 학생 데이터 중 해당 팀에 속한 학생들만 추출
+              (student) => student.team_id === team.team_id
             )}
-            selectedScore={selectedScore} /* 선택된 점수 전달 */
+            /* */
+            selectedScore={selectedScore} /* 현재 선택된 점수 전달 */
             addLog={addLog} /* 로그 추가 함수 전달 */
             onScoreChange={handleScoreChange} /* 점수 변경 함수 전달 */
           />
         ))}
       </div>
+
+      {/* ScoreLog는 점수 변경 기록을 테이블 형식으로 표시함, 그리고
+      개별 로그 항목을 삭제하거나 모든 로그를 삭제할 수 있는 인터페이스를 제공함 */}
       <ScoreLog
         log={log} /* 현재 로그 전달 */
         onRemoveLog={removeLog} /* 로그 제거 함수 전달 */
@@ -145,4 +181,4 @@ const TeamScore = () => {
   );
 };
 
-export default TeamScore; // TeamScore 컴포넌트를 기본 내보내기
+export default TeamScore;
