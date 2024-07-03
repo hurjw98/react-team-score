@@ -3,10 +3,6 @@
 ![react_team_score_mainpage](https://github.com/hurjw98/react-team-score/assets/157206299/8f370866-fba3-480c-ae7b-316c7b7bdba8)
 
 <br/>
-
-🔗 팀 점수 관리 [[Live Demo](#)]  <!-- 여기에 실제 데모 링크를 넣으세요 -->
-
-<br/>
 <br/>
 
 ## 1. Project
