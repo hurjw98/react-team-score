@@ -226,6 +226,19 @@ export default ScoreLog;
 <br/>
 <br/>
 
+
+## 5. 실행 방법
+ <br/>
+ 
+(1) visual studio code 설치 <br/> <br/>
+(2) node.js 설치 <br/> <br/>
+(3) visual studtio code에서 폴더 열기 <br/> <br/>
+(4) 터미널에서 npm install 입력 <br/> <br/>
+(5) 터미널에서 npm run dev 입력 (입력하면 나오는 링크 클릭)
+
+<br/>
+<br/>
+
 [맨위로 이동하기](#-팀-점수-관리-toy-프로젝트)
 
 
