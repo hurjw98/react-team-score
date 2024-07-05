@@ -15,7 +15,7 @@
 
 ### 1-2. Project Duration & Participants
 
-- 2023-5-26 ~ 2023-5-28 (잠시 중단)
+- 2023-5-26 ~ 2023-5-28
 - 개인 프로젝트 (1인)
 
 <br/>
@@ -27,6 +27,7 @@
 ![REACT](https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=ffffff)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3&logoColor=ffffff)
 ![Git](https://img.shields.io/badge/Git-f05032?style=for-the-badge&logo=git&logoColor=ffffff)
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
 
 <br/>
 <br/>
@@ -42,6 +43,12 @@
 ### 3-1. Score Change
 
 사용자는 점수 변경 값을 선택하고, 해당 값을 팀원에게 적용하여 점수를 변경할 수 있습니다. 점수는 양수와 음수를 선택할 수 있으며, 선택된 값에 따라 색상이 다르게 표시됩니다.
+
+<br>
+
+![score01](https://github.com/hurjw98/react-team-score/assets/157206299/7c1d1a1a-0b2c-476b-ae27-6552b54fa44f)
+
+<br>
 
 ```jsx
 import React from "react";
@@ -83,6 +90,11 @@ export default ScoreChange;
 ### 3-2. View and Delete Score Log
 사용자는 점수 변경 기록을 확인하고 개별 기록을 삭제할 수 있습니다. 기록은 팀명, 팀원, 변경된 점수, 날짜 및 시간으로 구성되어 있습니다.
 
+<br>
+
+![score02](https://github.com/hurjw98/react-team-score/assets/157206299/91148649-1fa1-4167-9330-55f3632801ee)
+
+<br>
 
 ```jsx
 import React from "react";
@@ -134,6 +146,11 @@ export default ScoreLog;
 ### 3-3. Clear All Score Logs
 사용자는 모든 점수 변경 기록을 삭제할 수 있습니다. 이때, 모든 기록이 삭제되며, 삭제된 기록에 해당하는 점수 변경도 복구됩니다.
 
+<br>
+
+![score03](https://github.com/hurjw98/react-team-score/assets/157206299/d6ffcf2e-e28f-4ad9-80ae-dec8f5f612cd)
+
+<br>
 
 ```jsx
 import React from "react";
@@ -187,6 +204,12 @@ export default ScoreLog;
 
 ### 4-1. Responsive Web
 팀 점수 관리 웹 페이지는 화면 크기에 따라 유동적으로 사이즈가 조절됩니다.
+
+<br>
+
+![score04](https://github.com/hurjw98/react-team-score/assets/157206299/1b133fdd-b8ab-4010-a15a-694e47796a5a)
+
+<br>
 
 ```css
 @media (max-width: 768px) {
